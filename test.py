@@ -4,6 +4,7 @@ desired_size = 368
 im_pth = "queenfireant.png"
 for image in glob.glob("*.png"):
     im = Image.open(image)
+    im = im.rotate(-45, expand = 1)
     old_size = im.size  # old_size[0] is in (width, height) format
     
     ratio = float(desired_size)/max(old_size)
@@ -21,4 +22,4 @@ for image in glob.glob("*.png"):
     new_im.paste(im, ((desired_size-new_size[0])//2,
                         (desired_size-new_size[1])//2))
 
-    new_im.save(f"square/{image}")
+    new_im.save(f"rotated/{image}")

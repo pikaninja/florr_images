@@ -4,7 +4,8 @@ desired_size = 368
 im_pth = "queenfireant.png"
 for image in glob.glob("*.png"):
     im = Image.open(image)
-    im = im.rotate(-45, expand = 1)
+    if "leech" not in image and "starfish" not in image:
+        im = im.rotate(-45, expand = 1)
     old_size = im.size  # old_size[0] is in (width, height) format
     
     ratio = float(desired_size)/max(old_size)
